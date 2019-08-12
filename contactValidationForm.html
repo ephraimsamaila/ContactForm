@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <title>Contact Form</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Contact Form">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="MB Auwal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">   
+    <style>
+      body{
+        background: rgb(106, 161, 196);
+        margin-top:100px;
+      }
+      h2{
+        color: aliceblue;
+        text-align: center;
+      }
+    </style>
+
+    <script>
+    
+    function contactForm(){
+          var fName = document.contact.firstName.value;
+          var sName = document.contact.surName.value;
+          var oName = document.contact.otherName.value;
+          var sub = document.contact.subject.value;
+          s = document.getElementById("article").value;
+          s = s.replace(/(^\s*)|(\s*$)/gi,"");
+          s = s.replace(/[ ]{2,}/gi," ");
+          s = s.replace(/\n /,"\n");
+
+          if (fName == "" || sName == ""  || sub == ""  || s == "") {
+          alert("All Fields Are Required.");
+          
+          }else if (s.split(' ').length < 3) {
+              alert("Mesaage must  have  a minimum of 3 words");
+          return false;
+            
+          }else if (fName.length < 3){
+            alert("First Name must have a minimum of 3 Characters");
+
+          }else if (sName.length < 3){
+            alert("SurName must have a minimum of 3 Characters");
+
+          }else if (sub.length < 3){
+            alert("Subject must have a minimum of 3 Characters");
+
+          }else{
+                alert("Your FullName is: " + " " + fName  + " " +   sName + " " + oName  + "\n" +  " Subject: " + sub + "\n" + " Message: " +  s);
+        
+          } 
+        }
+
+    </script>
+
+</head>
+<body>
+
+  <div class="container">
+
+          <div class="row">
+
+              <div class="col-4">
+
+              </div>
+
+              <div class="col-4">
+
+                  <h2>Contact Form</h2>
+
+              <form name="contact">
+
+                  <div class="form-group">
+                  <label>First Name:</label>
+                  <input  name="firstName" type="text" class="form-control" required minlength="3">
+                  </div>
+
+                  <div class="form-group">
+                  <label>SurName:</label>
+                  <input name="surName" type="text" class="form-control" required minlength="3">
+                  </div>
+
+                  <div class="form-group">
+                  <label>Other Names:</label>
+                  <input name="otherName" type="text" class="form-control" >
+                  </div>
+
+                  <div class="form-group">
+                  <label>Subject:</label>
+                  <input name="subject" type="text" class="form-control" required minlength="3">
+                  </div>
+
+                  <div class="form-group">
+                  <label>Message</label>
+                  <textarea class="form-control" rows="2" cols="10" id="article"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" onClick=" return contactForm()">Submit</button>
+                
+                </form>
+
+              </div>
+            </div>
+  </div>
+</body>
+</html>
